@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="time"></div>
+    <script src="../../node_modules/react/umd/react.development.js"></script>
+    <script src="../../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script>
+        var currentDate = new Date()
+        var dateTime = formatAMPM(currentDate)
+
+        const time = React.createElement('h1', null, `The time is: ${dateTime}`)
+        ReactDOM.render(time, document.getElementById('time'))
+
+        function formatAMPM(date) {
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        seconds = seconds < 10 ? '0'+seconds : seconds;
+        var strTime = hours + ':' + minutes + ':' + seconds + ' ' + ampm.toLocaleUpperCase();
+        return strTime;
+        }
+    </script>
+        
+</body>
+</html>
